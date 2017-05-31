@@ -3,6 +3,6 @@
 	"type": "object",
 	"properties": {
 		"Rules": { "type": "array" },
-		"Required": ["Rules"]
+		"required": ["Rules"]
 	}
 }
