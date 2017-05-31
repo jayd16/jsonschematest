@@ -1,8 +1,46 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"type": "object",
-	"properties": {
-		"Rules": { "type": "array" },
-		"required": ["Rules"]
-	}
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "rule": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "$ref": "#/definitions/ruleId"
+        },
+        "Conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/condition"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "Id",
+        "Conditions"
+      ]
+    },
+    "ruleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "condition": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9_]+((<|>|=|>=|<=)[0-9]+)?$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/rule"
+      }
+    }
+  },
+  "required": [
+    "Rules"
+  ],
+  "additionalProperties": false
 }
