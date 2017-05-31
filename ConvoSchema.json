@@ -32,6 +32,9 @@
   },
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "Rules": {
       "type": "array",
       "items": {
